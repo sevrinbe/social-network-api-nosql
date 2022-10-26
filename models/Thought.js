@@ -1,24 +1,23 @@
-const { Schema, model } = require('mongoose');
-const reactionSchema = require('./Reaction')
+const { Schema, Types, model } = require("mongoose");
+const reactionSchema = require("./Reaction");
 
-// Schema to create a course model
 const thoughtSchema = new Schema(
   {
     thoughtText: {
       type: String,
       required: true,
       minLength: 1,
-      maxLength: 280
+      maxLength: 280,
     },
     createdAt: {
       type: Date,
       default: Date.now(),
     },
     username: {
-      type: String, 
-      required: true
+      type: String,
+      required: true,
     },
-    reactions: [reactionSchema]
+    reactions: [reactionSchema],
   },
   {
     toJSON: {
@@ -28,6 +27,6 @@ const thoughtSchema = new Schema(
   }
 );
 
-const Course = model('course', courseSchema);
+const Thought = model("thought", thoughtSchema);
 
-module.exports = thoughtSchema;
+module.exports = Thought;
